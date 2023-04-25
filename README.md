@@ -1,4 +1,4 @@
-# gmma
+# gmma app
 
 A new Flutter project.
 

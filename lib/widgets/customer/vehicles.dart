@@ -13,114 +13,112 @@ class _VehiclesState extends State<Vehicles> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.value(FirebaseAuth.instance.currentUser),
-        builder: (ctx, futureSnapshot) {
-          if (futureSnapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('customerVehicles')
-                .snapshots(),
-            builder: (ctx, vehicleSnapshot) {
-              if (vehicleSnapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (vehicleSnapshot.data!.docs.isEmpty) {
-                print(vehicleSnapshot);
-                return const Center(
-                  child: Text('No vehicles added'),
-                );
-              }
-              final vehicleDocs = vehicleSnapshot.data!.docs;
-              return ListView.builder(
-                  itemCount: vehicleDocs.length,
-                  itemBuilder: (ctx, index) {
-                    if (vehicleDocs[index]['userID'] ==
-                        futureSnapshot.data!.uid) {
-                      return Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 420,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 200,
-                                child: Image.network(
-                                  vehicleDocs[index]['imageUrl'],
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  'Owner name: ${vehicleDocs[index]['ownerName']}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  'Vehicle Number: ${vehicleDocs[index]['vehicleNumber']}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  'Vehicle Type: ${vehicleDocs[index]['vehicleType']}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  'Vehicle Make: ${vehicleDocs[index]['vehicleMake']}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  'Vehicle Model: ${vehicleDocs[index]['vehicleModel']}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.chevron_right),
-                                label: const Text('View Details'),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }
-                    return const Center(
-                      child: Text('No Vehicles added yet!'),
-                    );
-                  });
-            },
+      future: Future.value(FirebaseAuth.instance.currentUser),
+      builder: (ctx, futureSnapshot) {
+        if (futureSnapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
           );
-        });
+        }
+        return StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('customerVehicles')
+              .snapshots(),
+          builder: (ctx, vehicleSnapshot) {
+            if (vehicleSnapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (vehicleSnapshot.data!.docs.isEmpty) {
+              return const Center(
+                child: Text('No vehicles added'),
+              );
+            }
+            final vehicleDocs = vehicleSnapshot.data!.docs;
+            return ListView.builder(
+              itemCount: vehicleDocs.length,
+              itemBuilder: (ctx, index) {
+                if (vehicleDocs[index]['userID'] == futureSnapshot.data!.uid) {
+                  return Card(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 420,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 200,
+                            child: Image.network(
+                              vehicleDocs[index]['imageUrl'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Owner name: ${vehicleDocs[index]['ownerName']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Vehicle Number: ${vehicleDocs[index]['vehicleNumber']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Vehicle Type: ${vehicleDocs[index]['vehicleType']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Vehicle Make: ${vehicleDocs[index]['vehicleMake']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Vehicle Model: ${vehicleDocs[index]['vehicleModel']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(Icons.chevron_right),
+                            label: const Text('View Details'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }

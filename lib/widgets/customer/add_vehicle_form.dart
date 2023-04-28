@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import './image_picker.dart';
-import '../../models/vehicles_list.dart';
 
 class AddVehicleForm extends StatefulWidget {
   const AddVehicleForm({Key? key, required this.submitFn}) : super(key: key);
@@ -22,20 +22,16 @@ class AddVehicleForm extends StatefulWidget {
 }
 
 class _AddVehicleFormState extends State<AddVehicleForm> {
-  String? _vehicleTypeOption;
-  String? _vehicleMakeOption;
-  String? _vehicleModelOption;
-  List<String> _vehicleTypeList = [];
-  List<String> _vehicleMakeList = [];
-  List<String> _vehicleModelsList = [];
   File? _vehicleImageFile;
   final _formKey = GlobalKey<FormState>();
 
   var _ownerName = '';
   var _vehicleNumber = '';
-  var _vehicleType = '';
-  var _vehicleMake = '';
-  var _vehicleModel = '';
+  String? _vehicleType;
+  String? _vehicleMake;
+  String? _vehicleModel = '';
+
+  final FirebaseFirestore _database = FirebaseFirestore.instance;
 
   final modelKey = GlobalKey<FormState>();
   void _pickedImage(File image) {
@@ -47,12 +43,67 @@ class _AddVehicleFormState extends State<AddVehicleForm> {
     widget.submitFn(
       ownerName: _ownerName,
       vehicleNumber: _vehicleNumber,
-      vehicleType: _vehicleType,
-      vehicleMake: _vehicleMake,
-      vehicleModel: _vehicleModel,
+      vehicleType: _vehicleType!,
+      vehicleMake: _vehicleMake!,
+      vehicleModel: _vehicleModel!,
       vehicleImage: _vehicleImageFile!,
       ctx: context,
     );
+  }
+
+  Future<List<String>> _getVehiclesTypeList() async {
+    List<String> vehiclesTypeList = [];
+    await _database
+        .collection('vehiclesList')
+        .doc('typesOfVehicles')
+        .get()
+        .then(
+      (value) {
+        List<dynamic> dynamicList = value.data()!['vehicleTypes'];
+        vehiclesTypeList =
+            dynamicList.map((element) => element.toString()).toList();
+      },
+    );
+    return vehiclesTypeList;
+  }
+
+  Future<List<String>> _getVehiclesMakeList(String vehicleType) async {
+    List<String> vehicleMakeList = [];
+    await _database
+        .collection('vehiclesList')
+        .doc('typesOfVehicles')
+        .collection('vehiclesMakeList')
+        .doc('vehiclesMakeList')
+        .get()
+        .then(
+      (value) {
+        List<dynamic> dynamicList = value.data()![vehicleType];
+        vehicleMakeList =
+            dynamicList.map((element) => element.toString()).toList();
+      },
+    );
+    return vehicleMakeList;
+  }
+
+  Future<List<String>> _getVehicleModelsList(
+      String vehicleType, String vehicleMake) async {
+    List<String> vehicleModelsList = [];
+    await _database
+        .collection('vehiclesList')
+        .doc('typesOfVehicles')
+        .collection('vehiclesMakeList')
+        .doc('vehiclesMakeList')
+        .collection('vehiclesModelList')
+        .doc(vehicleType)
+        .get()
+        .then(
+      (value) {
+        List<dynamic> dynamicList = value.data()![vehicleMake];
+        vehicleModelsList =
+            dynamicList.map((element) => element.toString()).toList();
+      },
+    );
+    return vehicleModelsList;
   }
 
   @override
@@ -83,91 +134,108 @@ class _AddVehicleFormState extends State<AddVehicleForm> {
                     _vehicleNumber = value!;
                   },
                 ),
-                DropdownButtonFormField(
-                  onSaved: (value) {
-                    _vehicleType = value!;
-                  },
-                  decoration: const InputDecoration(
-                    labelText: 'Choose Vehicle Type',
-                    border: OutlineInputBorder(),
-                  ),
-                  items: VehiclesList()
-                      .typeOfVehicles
-                      .map(
-                        (val) => DropdownMenuItem(
-                          key: ValueKey(val),
-                          value: val,
-                          child: Text(
-                            (val),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (newValue) => setState(
-                    () {
-                      _vehicleTypeOption = newValue;
-                      _vehicleMakeOption = '';
-                    },
-                  ),
-                  value: null,
-                ),
-                DropdownButtonFormField(
-                  onSaved: (value) {
-                    _vehicleMake = value!;
-                  },
-                  decoration: const InputDecoration(
-                    labelText: 'Choose Vehicle Make',
-                    border: OutlineInputBorder(),
-                  ),
-                  items: VehiclesList()
-                      .vehicleMakeList
-                      .map(
-                        (val) => DropdownMenuItem(
-                          key: ValueKey(val),
-                          value: val,
-                          child: Text(
-                            (val),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (newValue) {
-                    setState(
-                      () {
-                        _vehicleMakeOption = newValue!;
-                        _vehicleModelsList =
-                            VehiclesList().getModelsForMake(newValue);
+                FutureBuilder(
+                  future: _getVehiclesTypeList(),
+                  builder: (ctx, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting ||
+                        snapshot.data == null) {
+                      return const CircularProgressIndicator();
+                    }
+                    return DropdownButtonFormField(
+                      key: const ValueKey('vehicleType'),
+                      onSaved: (value) {
+                        _vehicleType = value!;
                       },
+                      decoration: const InputDecoration(
+                        labelText: 'Choose Vehicle Type',
+                      ),
+                      items: snapshot.data
+                          ?.map(
+                            (vehicleType) => DropdownMenuItem(
+                              value: vehicleType,
+                              child: Text(vehicleType),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (newValue) => setState(
+                        () {
+                          _vehicleType = newValue!;
+                          _vehicleMake = null;
+                          _vehicleModel = null;
+                        },
+                      ),
+                      value: _vehicleType ?? null,
                     );
                   },
-                  value: null,
                 ),
-                DropdownButtonFormField(
-                  // key: modelKey,
-                  decoration: const InputDecoration(
-                    labelText: 'Choose Vehicle Model',
-                    border: OutlineInputBorder(),
-                  ),
-                  items: _vehicleModelsList
-                      .map(
-                        (val) => DropdownMenuItem(
-                          value: val,
-                          child: Text(
-                            (val),
-                          ),
+                if (_vehicleType != null)
+                  FutureBuilder(
+                    future: _getVehiclesMakeList(_vehicleType!),
+                    builder: (ctx, snapshot) {
+                      print('Hello: ${snapshot.data}');
+                      if (snapshot.connectionState == ConnectionState.waiting ||
+                          snapshot.data == null) {
+                        return const CircularProgressIndicator();
+                      }
+                      return DropdownButtonFormField(
+                        key: const ValueKey('vehicleMake'),
+                        onSaved: (value) {
+                          _vehicleMake = value!;
+                        },
+                        decoration: const InputDecoration(
+                          labelText: 'Choose Vehicle Make',
                         ),
-                      )
-                      .toList(),
-                  onChanged: (newValue) => setState(
-                    () {
-                      _vehicleModelOption = newValue!;
+                        items: snapshot.data
+                            ?.map(
+                              (vehicleMake) => DropdownMenuItem(
+                                value: vehicleMake,
+                                child: Text(vehicleMake),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (newValue) => setState(
+                          () {
+                            _vehicleMake = newValue!;
+                            _vehicleModel = null;
+                          },
+                        ),
+                        value: _vehicleMake ?? null,
+                      );
                     },
                   ),
-                  onSaved: (value) {
-                    _vehicleModel = value!;
-                  },
-                  value: null,
-                ),
+                if (_vehicleType != null && _vehicleMake != null)
+                  FutureBuilder(
+                    future: _getVehicleModelsList(_vehicleType!, _vehicleMake!),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting ||
+                          snapshot.data == null) {
+                        return const CircularProgressIndicator();
+                      }
+                      return DropdownButtonFormField(
+                        key: const ValueKey('vehicleModel'),
+                        onSaved: (value) {
+                          _vehicleModel = value!;
+                        },
+                        decoration: const InputDecoration(
+                          labelText: 'Choose Vehicle Model',
+                        ),
+                        items: snapshot.data
+                            ?.map(
+                              (vehicleModel) => DropdownMenuItem(
+                                value: vehicleModel,
+                                child: Text(vehicleModel),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (newValue) => setState(
+                          () {
+                            _vehicleModel = newValue;
+                          },
+                        ),
+                        value: _vehicleModel ?? null,
+                      );
+                    },
+                  ),
                 UserImagePicker(imagePickFn: _pickedImage),
                 ElevatedButton.icon(
                   onPressed: () {

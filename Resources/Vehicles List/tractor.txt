@@ -1,0 +1,112 @@
+tractor
+
+'make': 'Mahindra & Mahindra', 'model': ['Arjun 605 DI PP DLX', 'Arjun 555 DI', '265 DI XP Plus', 'JIVO 365 DI 4WD', '585 DI XP Plus', 'YUVO 585 MAT', 'YUVO TECH Plus 585', 'Novo 655 DI', 'Arjun Novo 605 DI-i-4WD', 'Arjun Novo 605 DI-PS', 'Novo 755 Di', 'JIVO 305 DI 4WD', 'JIVO 305 DI 4WD', 'JIVO 225 DI', 'YUVO TECH Plus 575 4WD', 'Yuvraj 215 NXT', '575 DI', 'YUVO TECH Plus 415 DI', 'Yuvo Tech Plus 275', '595 DI TURBO', '415 DI', 'YUVO TECH Plus 405 DI', 'Arjun NOVO 605 DI-i', 'Arjun Ultra 1 605 Di', '275 DI XP Plus', '475 DI SP Plus', '415 DI SP Plus', '275 DI TU XP Plus', '275 DI TU SP Plus', '415 DI XP PLUS', '275 DI SP Plus', 'Yuvo 575 DI 4WD', 'YUVO 475 DI', '585 DI Power Plus BP', 'JIVO 245 VINEYARD', '265 DI', '475 DI XP PLUS MS', '475 DI', '255 DI Power Plus', '275 DI TU', 'Yuvo 275 DI', '585-di-sarpanch', 'Yuvo 575 DI', 'Arjun Novo 605 DI-MS', 'YUVO 415 DI', '475 DI XP Plus', '575 DI XP Plus', 'Arjun Novo 605 DI-i-with AC Cabin', 'Yuvo 265 DI', '275 DI ECO', '265 DI Power Plus', '555 DI Power Plus']
+
+'make': 'Swaraj Tractors', 'model':['724 XM', '744 XM', '855 DT PLUS', '744 XM Potato Expert', '825 XM', '855 XM', '960 FE', '742 FE', '843 XM OSM', '855 FE', '744 FE', '744 FE Potato Expert', 'Code', '744 XT', '742 XT', '963 FE', '735 XT', '735 XM', '724 XM Orchard', '724 XM Orchard NT', '717', '841 XM', '843 XM', '744 FE 2WD', 735 FE', '724 XM Orchard 4WD', '834 XM']
+
+'make': 'Massey Ferguson', 'model': ['6026 maxpro narrow track', '5245 DI Planetary Plus', '9500 E', '1134 DI', '9500 Super Shuttle Series', '1035 DI Planetary Plus', '45 DI 4WD', '6028 Maxpro Wide Track', '7235 DI', '6028 maxpro narrow track', '1035 DI Dost', '2635 4WD', '6026 maxpro wide track', '241', '241 DI Tonner', 'TAFE 30 DI Orchard Plus', '5245 DI Maha Mahaan', '1035 DI Tonner', '1035 DI Maha Shakti', '1035 DI Super Plus', '1030 DI Mahashakti', '241 DI MAHA SHAKTI', '241 DI DYNATRACK', '241 DI Mahaan', '6028', '245 DI', '246 DI DYNATRACK', '1035 DI', '9000 Planetary Plus', '245 DI Planetary Plus', '241 DI Planetary plus', '9000 Planetary Plus Combine', '244 DI sona', '9500 Smart', '5118', '245 Smart', '254 DYNATRACK', '9500', '244 Dynatrack 4WD', '7250 DI', '241 DI', '7250 DI Power UP', '246 Dynatrack 4WD', '244 DI PM', '244 DI PD']
+
+'make': 'Sonalika Tractors', 'model': ['TIGER DI 26', 'DI 30 RX BAAGBAN SUPER', 'MM 39 DI', 'DI 60 4WD', 'Tiger 55', 'MM 50 DI', 'Tiger 60', 'GT 26', 'DI 32 Baagban', 'DI 745 DLX', 'Tiger 50', 'RX 55 DLX', 'DI 60 MM Super', 'Rx 42 Mahabali', 'Worldtrac 75', 'DI 50 DLX', 'Tiger 47', 'Worldtrac 90', 'DI 750 III Multi Speed DLX', 'Worldtrac 60 Rx Sikander', 'DI 50 Rx', 'SIKANDER DI 55 DLX', 'MM 35 DI', 'Rx 750 III DLX', Rx 47 Mahabali', 'Rx 745 III Sikander', 'DI 734', 'DI 35', 'Worldtrac 60', 'DI 740 III', 'GT 22', 'DI 730 II HDM', 'DI 745 III', 'DI 734 Power Plus', 'RX 60 DLX', 'Rx 35 Sikander', 'DI 42 Rx', 'DI 55 DLX', 'RX 55 Sikander', 'RX 50 Sikander', 'DI 745 III Chhatrapati', 'DI 42 Chhatrapati', 'Rx 35', 'Rx 60 Sikander', 'Baagban Super DI 30', 'Rx 50', 'Baagban DI 30', 'DI 60', 'DI 75 CRDS 4WD', 'Rx 47 Sikander', 'Rx 42 Sikander', 'DI 75 CRDS', 'DI 42 Sikander', 'GT 20', 'DI 50 Sikander', 'DI 35 Sikander', 'DI 47 Rx', 'MM 45', 'Rx 60', 'Rx 750 III Sikander', 'DI 750 III Sikander', 'DI 745 III Sikander', '60 Max Tiger', 'DI 52 RX Tiger Series', 'Rx 745 III', 'DI 60 Rx MM Super', 'GT 28', 'DI 42 HDM', 'DI 750 III', 'DI 60 Sikander'
+
+'make': 'Powertrac', 'model': ['425 DS', 'Euro 47 Potato Special', 'ALT 3500', '434 DS Super Saver', 'Euro G28', 'ALT 4000', '435 Plus', 'Euro 47', 'Euro 45 Plus 4WD', 'Euro 60 Next 4wd', '439 Plus', '439 RDX', '434', 'Euro 55 Next', 'Euro 55', '434 RDX', 'Euro 439', '439 DS Super Saver', 'Euro 50', 'Euro 41 Plus', 'Euro 42 Plus', 'Euro 55 Next 4wd', 'Euro 60', '425 N', '437', 'Euro 60 Next', 'Euro 50 Next', 'Euro 45 Plus 2WD', 'Euro 60 E-CRT', 'Euro 41', '430 Plus', '434 Plus'
+
+'make': 'Eicher', 'model': ['312', '380 Super Power', '650 4WD', '557', '480', '5660', '551 Super Plus', '380 4WD', '380 2WD Prima G3', '330', '280 4WD', '188 4WD', '557 2wd Prima G3', '557 4wd Prima G3', '380 4WD Prima G3', '241', '380', '368', '333', '333 Super Plus', '485', '551', '364', '650', '188', '242', '548', '5150 SUPER DI', '371 Super Power'
+
+'make': 'New Holland', 'model': ['Simba 30', '3037 TX Super', 'Excel 6010', '3600 Tx Heritage Edition', '3630 TX Plus+', '5500 Turbo Super', '9010', 'Excel 8010', '3630 TX Special Edition', '3032 Nx', '4710', '3630 TX Super Plus+', '5620 Tx Plus', '5630 TX Plus', '3630 TX Super', '3600-2 Tx Super 4WD', '3600-2 Tx Super', '3600-2 TX ALL ROUNDER PLUS', '3600-2 TX All Rounder Plus+', '3600 Tx Super Heritage Edition', '3230 TX Super', '3230 Nx', '3037 Tx', '3037 Nx', '3600-2 TX', 'Excel 4710 Paddy Special', '3600-2 Excel', 'Excel 4710 Paddy Special 4wd', 'Excel 4710', '4710 2WD WITH CANOPY', '4010', '3510', '7500 Turbo super', 'TD 5.90', '4710 Turbo Super'
+
+'make': 'John Deere India Private Limited', 'model': ['']
+
+'make': 'Preet Tractors', 'model': ['']
+
+'make': 'Force Motors', 'model': ['']
+
+'make': 'Escorts', 'model': ['']
+
+'make': 'Tafe Motors', 'model': ['']
+
+'make': 'HMT Limited', 'model': ['']
+
+'make': 'Standard', 'model': ['']
+
+'make': 'Farmtrac', 'model': ['']
+
+'make': 'Kubota', 'model': ['']
+
+'make': 'Solis, 'model': ['']
+
+'make': 'Indo Farm', 'model': ['']
+
+'make': 'VST', 'model': ['']
+
+'make': 'Captain', 'model': ['']
+
+'make': 'Deutz Fahr', 'model': ['']
+
+'make': 'ACE', 'model': ['']
+
+'make': 'Digitrac', 'model': ['']
+
+'make': 'Trakstar', 'model': ['']
+
+'make': 'Hindustan', 'model': ['']
+
+'make': 'Kartar', 'model': ['']
+
+'make': 'Celestial', 'model': ['']
+
+'make': 'HAV', 'model': ['']
+
+'make': 'Autonxt', 'model': ['']
+
+
+255 DI Power Plus
+265 DI
+265 DI Power Plus
+265 DI XP Plus
+275 DI ECO
+275 DI SP Plus
+275 DI TU
+275 DI TU SP Plus
+275 DI TU XP Plus
+275 DI XP Plus
+415 DI
+415 DI SP Plus
+415 DI XP PLUS
+475 DI
+475 DI SP Plus
+475 DI XP PLUS MS
+475 DI XP Plus
+555 DI Power Plus
+575 DI
+575 DI XP Plus
+585 DI Power Plus BP
+585 DI XP Plus
+585-di-sarpanch
+595 DI TURBO
+Arjun 555 DI
+Arjun 605 DI PP DLX
+Arjun NOVO 605 DI-i
+Arjun Novo 605 DI-MS
+Arjun Novo 605 DI-PS
+Arjun Novo 605 DI-i-4WD
+Arjun Novo 605 DI-i-with AC Cabin
+Arjun Ultra 1 605 Di
+JIVO 225 DIYUVO TECH Plus 575 4WD
+JIVO 245 VINEYARD
+JIVO 305 DI 4WD
+JIVO 305 DI 4WD
+JIVO 365 DI 4WD
+Novo 655 DI
+Novo 755 Di
+YUVO 415 DI
+YUVO 475 DI
+YUVO 585 MAT
+YUVO TECH Plus 405 DI
+YUVO TECH Plus 415 DI
+YUVO TECH Plus 585
+Yuvo 265 DI
+Yuvo 275 DI
+Yuvo 575 DI
+Yuvo 575 DI 4WD
+Yuvo Tech Plus 275
+Yuvraj 215 NXT

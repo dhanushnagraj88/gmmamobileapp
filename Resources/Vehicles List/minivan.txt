@@ -1,0 +1,9 @@
+minivan
+'make': 'Maruti Suzuki', 'model':['Omni','Eeco']
+'make': 'Mahindra', 'model':['Supra']
+'make': 'Tata', 'model':['Magic Express', 'Winger']
+'make': 'Toyota', 'model': ['Hiace GL']
+'make': 'Nissan', 'model': ['NV350']
+
+van/tempo traveller
+'make': 'Force', 'model':['Traveller 3050', 'Traveller 3350', 'Traveller 3700', 'Traveller 4020', 'Traveller 26']

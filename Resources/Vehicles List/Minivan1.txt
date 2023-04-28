@@ -1,0 +1,19 @@
+{'make': 'Tata Motors', 'model': ['Winger', 'Magic', 'Venture', '407']
+
+'make': 'Mahindra & Mahindra', 'model': ['Tourister Base', 'Tourister Excelo', 'Tourister Cosmo', 'ourister School', 'Supro School Van']
+
+'make': 'Force Motors', 'model': ['Traveller 26', 'Traveller 3350', 'Traveller Monobus', 'Traveller Monobus' , 'Traveller Royale']
+
+'make': 'Ashok Leyland', 'model': ['Stile', 'MiTR', 'Dost', 'Dost+']
+
+'make': 'SML Isuzu', 'model': ['Executive', 'Samrat', 'Prestige', 'Super']
+
+'make': 'Maruti Suzuki', 'model': ['Super Carry']
+
+'make': 'Swaraj Mazda', 'model': ['Super AC', 'Super Non-AC', 'Deluxe AC', 'Deluxe Non-AC' , 'School Bus' , 'Executive']
+
+'make': 'Bajaj Auto', 'model': ['Maxima Cargo', 'Maxima C', ' Maxima Z', 'Maxima XTRA' , 'Maxima DX']
+}
+
+
+

@@ -1,0 +1,13 @@
+'make': 'Bajaj Auto', 'model': ['Pulsar N160','Pulsar F250','Pulsar RS200','Pulsar NS200','Pulsar NS160','Pulsar 150','Pulsar NS125','Pulsar 125','Pulsar 220 F','Dominar 250','Dominar 400','Avenger 160 Street','Avenger 220 Cruise','Platina 100','Platina 110','CT 125X','CT 110X']
+'make': 'Eicher Motors Ltd - Royal Enfield', 'model': ['Hunter 350','Classic 350','Bullet 350','Continental GT 650','Meteor 350','Himalayan','Super Meteor 650','Interceptor 650','Scram 411']
+'make': 'Hero Motocorp', 'model': ['Splendor Plus','HF Deluxe','Splendor Plus Xtec','Super Splendor','Xtreme 160R','Glamour','Xpulse 200 4V','Passion Pro','Pleasure+','Passion Xtec','Glamour Xtec','Xtreme 200S','Xpulse 200T 4V','Pleasure+ Xtec','Maestro Edge 125','Destini 125 Xtec','Maestro Edge 110','Xoom','Super Splendor Xtec']
+'make': 'Honda Motorcycle', 'model': ['SP 125','Shine','Unicorn','H'ness CB350','Hornet 2.0','Shine 100','XBlade','Livo','CD 110 Dream','CBR650R','CB350RS','CB300R','CB300F','Gold Wing','CB650R','CRF1100L Africa Twin','CBR1000RR-R','CB500X','CB200X','CB Hornet 160R','Grazia','Activa 125','Dio','Activa']
+'make': 'Husqvarna', 'model': ['Vitpilen 250','Svartpilen 250']
+'make': 'India Yamaha Motor Pvt Ltd', 'model': ['MT 15 V2','R15 V4','R15S','FZS-FI V3','FZ-FI V3','Aerox 155','FZ-X','Fascino 125 Fi Hybrid','RayZR 125 Fi Hybrid','FZ 25','FZS 25','RX100','RXG','RXZ','RX 135']
+'make': 'Jawa Moto', 'model': ['42','42 Bobber','Perak','Standard','42 2.1']
+'make': 'Mahindra Two Wheelers', 'model': ['Mojo 300 BS6','Gusto 125','Mojo XT 300','Mojo UT 300','Gusto 110','Centuro NXT','Centuro Rockstar','Duro DZ','Rodeo']
+'make': 'Vespa', 'model': ['ZX 125','SXL 125','SXL 150','VXL 125','VXL 150','Elegante 150']
+'make': 'Aprilia', 'model': ['SR 160','SR 125','RS 660',' Storm 125','SXR 160','SXR 125','RSV4 1100 Factory','Tuono 660','Tuonon Factory'
+'make': 'Suzuki Motorcycle India', 'model': ['Access 125','Burgman Street','Gixxer','Gixxer SF','Avenis','Gixxer SF 250','Katana','V-Storm SX']
+'make': 'TVS Motor', 'model': ['Raider','Apache RTR 160','Apache RTR 200','NTORQ 125','Jupiter','Ronin','Apache RTR 180','Apache RR 310','Radeon','Sport','Jupiter 125','XL 100','Scooty Pep Plus','Star City Plus','Zest']
+'make': 'Yezdi', 'model': ['Roadster','Adventure','Scrambler']

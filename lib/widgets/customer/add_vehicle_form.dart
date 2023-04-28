@@ -66,122 +66,107 @@ class _AddVehicleFormState extends State<AddVehicleForm> {
             key: _formKey,
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: TextFormField(
-                    key: const ValueKey('name'),
-                    decoration: const InputDecoration(labelText: 'Owner Name'),
-                    textCapitalization: TextCapitalization.words,
-                    onSaved: (value) {
-                      _ownerName = value!;
-                    },
-                  ),
+                TextFormField(
+                  key: const ValueKey('name'),
+                  decoration: const InputDecoration(labelText: 'Owner Name'),
+                  textCapitalization: TextCapitalization.words,
+                  onSaved: (value) {
+                    _ownerName = value!;
+                  },
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: TextFormField(
-                    textCapitalization: TextCapitalization.characters,
-                    key: const ValueKey('number'),
-                    decoration:
-                        const InputDecoration(labelText: 'Vehicle Number'),
-                    onSaved: (value) {
-                      _vehicleNumber = value!;
-                    },
-                  ),
+                TextFormField(
+                  textCapitalization: TextCapitalization.characters,
+                  key: const ValueKey('number'),
+                  decoration:
+                      const InputDecoration(labelText: 'Vehicle Number'),
+                  onSaved: (value) {
+                    _vehicleNumber = value!;
+                  },
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: DropdownButtonFormField(
-                    onSaved: (value) {
-                      _vehicleType = value!;
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Choose Vehicle Type',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: VehiclesList()
-                        .typeOfVehicles
-                        .map(
-                          (val) => DropdownMenuItem(
-                            key: ValueKey(val),
-                            value: val,
-                            child: Text(
-                              (val),
-                            ),
+                DropdownButtonFormField(
+                  onSaved: (value) {
+                    _vehicleType = value!;
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Choose Vehicle Type',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: VehiclesList()
+                      .typeOfVehicles
+                      .map(
+                        (val) => DropdownMenuItem(
+                          key: ValueKey(val),
+                          value: val,
+                          child: Text(
+                            (val),
                           ),
-                        )
-                        .toList(),
-                    onChanged: (newValue) => setState(
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (newValue) => setState(
+                    () {
+                      _vehicleTypeOption = newValue;
+                      _vehicleMakeOption = '';
+                    },
+                  ),
+                  value: null,
+                ),
+                DropdownButtonFormField(
+                  onSaved: (value) {
+                    _vehicleMake = value!;
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Choose Vehicle Make',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: VehiclesList()
+                      .vehicleMakeList
+                      .map(
+                        (val) => DropdownMenuItem(
+                          key: ValueKey(val),
+                          value: val,
+                          child: Text(
+                            (val),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (newValue) {
+                    setState(
                       () {
-                        _vehicleTypeOption = newValue;
-                        _vehicleMakeOption = '';
+                        _vehicleMakeOption = newValue!;
+                        _vehicleModelsList =
+                            VehiclesList().getModelsForMake(newValue);
                       },
-                    ),
-                    value: null,
-                  ),
+                    );
+                  },
+                  value: null,
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: DropdownButtonFormField(
-                    onSaved: (value) {
-                      _vehicleMake = value!;
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Choose Vehicle Make',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: VehiclesList()
-                        .vehicleMakeList
-                        .map(
-                          (val) => DropdownMenuItem(
-                            key: ValueKey(val),
-                            value: val,
-                            child: Text(
-                              (val),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (newValue) {
-                      setState(
-                        () {
-                          _vehicleMakeOption = newValue!;
-                          _vehicleModelsList =
-                              VehiclesList().getModelsForMake(newValue);
-                        },
-                      );
-                    },
-                    value: null,
+                DropdownButtonFormField(
+                  // key: modelKey,
+                  decoration: const InputDecoration(
+                    labelText: 'Choose Vehicle Model',
+                    border: OutlineInputBorder(),
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: DropdownButtonFormField(
-                    // key: modelKey,
-                    decoration: const InputDecoration(
-                      labelText: 'Choose Vehicle Model',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: _vehicleModelsList
-                        .map(
-                          (val) => DropdownMenuItem(
-                            value: val,
-                            child: Text(
-                              (val),
-                            ),
+                  items: _vehicleModelsList
+                      .map(
+                        (val) => DropdownMenuItem(
+                          value: val,
+                          child: Text(
+                            (val),
                           ),
-                        )
-                        .toList(),
-                    onChanged: (newValue) => setState(
-                      () {
-                        _vehicleModelOption = newValue!;
-                      },
-                    ),
-                    onSaved: (value) {
-                      _vehicleModel = value!;
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (newValue) => setState(
+                    () {
+                      _vehicleModelOption = newValue!;
                     },
-                    value: null,
                   ),
+                  onSaved: (value) {
+                    _vehicleModel = value!;
+                  },
+                  value: null,
                 ),
                 UserImagePicker(imagePickFn: _pickedImage),
                 ElevatedButton.icon(

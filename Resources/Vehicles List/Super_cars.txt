@@ -1,0 +1,32 @@
+{'make': 'Bugatti', 'model': ['Chiron', 'Veyron']
+
+'make': 'McLaren', 'model': ['720S', '570S' , 'GT']
+
+'make': 'Lamborghini', 'model': ['Aventador S', 'Aventador S Roadster' , 'Huracan EVO' , 'Huracan EVO Spyder' , 'Huracan RWD' , 'Huracan Urus']
+
+'make': 'Ferrari', 'model': ['488 GTB', '812 Superfast' , 'F8 Tributo' , 'Portofino' , 'Roma' , 'SF90 Stradale']
+
+'make': 'Aston Martin', 'model': ['DB11', 'DBS Superleggera' , 'Vantage' , 'Vantage Roadster' , 'DBX']
+
+'make': 'Porsche', 'model': ['911', '718 Cayman' , '718 Boxster' , 'Panamera' , 'Cayenne' , 'Macan' , 'Taycan']
+
+'make': 'Rolls Royce', 'model': ['Phantom', 'Ghost' , 'Cullinan']
+
+'make': 'Bentley', 'model': ['Continental GT', 'Continental GT Convertible' , 'Flying Spur' , 'Bentayga' , 'Bentayga Speed']
+
+'make': 'Mercedes-Benz', 'model': ['AMG GT R', 'AMG GT' , 'AMG S 63 Coupe' , 'AMG C 63 Coupe' , 'AMG G 63']
+
+'make': 'Audi', 'model': ['R8', 'RS7 Sportback' , 'RS5' , 'TT RS']
+
+'make': 'BMW', 'model': ['i8', 'M8' , 'M5' , 'X6 M']
+
+'make': 'Lexus', 'model': ['LC 500h', 'LFA']
+
+'make': 'Jaguar', 'model': ['F-Type', 'F-PACE SVR' , 'XE SV Project 8', 'XKR-S']
+
+'make': 'Lotus', 'model': ['Evora GT', 'Exige']
+
+'make': 'DC Design', 'model': ['DC Avanti']
+
+'make': 'Vazirani Automotive', 'model': ['Vazirani Shul']
+}

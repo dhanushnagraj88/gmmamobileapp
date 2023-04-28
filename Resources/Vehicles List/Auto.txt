@@ -1,0 +1,10 @@
+{'make': 'Bajaj Auto', 'model': ['RE', 'Maxima', 'Compact RE', 'Platina' , ' RE Optima'] 
+
+'make': 'Piaggio Vehicles Pvt. Ltd', 'model': [' Ape City', 'Ape Xtra', 'Ape DX', 'Ape Auto DX' , 'Ape Auto +', 'Ape City Plus', 'Ape E-City']
+
+'make': 'Mahindra & Mahindra', 'model': ['Alfa', 'Alfa Plus', 'Alfa Load', 'Champion' , 'Champion Plus', 'Gio', 'Maxximo', 'Treo'] 
+
+'make': 'Atul Auto Limited', 'model': ['Gem', 'Shakti', 'Smart', 'Elite']
+
+'make': 'TVS Motor Company', 'model': ['King', 'XL100 Comfort', 'Dazz', 'Max 4R' , 'King Deluxe']
+}

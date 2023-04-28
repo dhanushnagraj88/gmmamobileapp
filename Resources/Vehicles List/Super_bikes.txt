@@ -1,0 +1,26 @@
+{'make': 'Aprilia', 'model': ['RSV4', 'Shiver', 'Dorsoduro', 'Tuono']
+
+'make': 'Benelli', 'model': ['TNT 600i', '302R', 'Leoncino', 'Imperiale 400', 'TRK 502']
+
+'make': 'BMW Motorrad', 'model': ['S 1000 RR', 'R 1250 GS', 'K 1600 GTL', 'F 900 R']
+
+'make': 'Ducati', 'model': ['Panigale V4', 'Diavel 1260', 'Scrambler', 'Monster', 'Multistrada 1260']
+
+'make': 'Harley-Davidson', 'model': ['Fat Boy', 'Iron 883', 'Forty-Eight', 'Roadster', 'Street Rod']
+
+'make': 'Honda', 'model': ['CBR1000RR-R Fireblade', 'Africa Twin', 'CB1000R', 'CBR650R']
+
+'make': 'Indian Motorcycle', 'model': ['Scout', 'Scout Bobber', 'Scout Bobber Twenty', 'Scout Sixty', 'Chief Dark Horse', 'Chief Vintage', 'Chief Classic', 'Chief Bobber' , 'Chief Bobber Dark Horse', 'Super Chief Limited', 'FTR 1200', 'FTR Rally' , 'Roadmaster', 'Roadmaster Elite', 'Challenger', 'Challenger Dark Horse' , 'Challenger Limited', 'Springfield', 'Springfield Dark Horse']
+
+'make': 'Kawasaki', 'model': ['Ninja H2', 'Ninja ZX-10R', 'Ninja ZX-6R', 'Z H2', 'Ninja 1000SX' , 'Ninja 400']
+
+'make': 'KTM', 'model': ['390 Duke', 'RC 390', '250 Duke', '200 Duke', '1290 Super Duke R' , '790 Duke']
+
+'make': 'MV Agusta', 'model': ['F4', 'Brutale', 'Dragster', 'Turismo Veloce']
+
+'make': 'Suzuki', 'model': ['Hayabusa', 'GSX-R1000R', 'V-Strom 650XT', 'Intruder M1800R']
+
+'make': 'Triumph', 'model': ['Rocket 3', 'Speed Triple', 'Tiger', 'Bonneville', 'Daytona' , 'Street Triple']
+
+'make': 'Yamaha', 'model': ['YZF-R1', 'MT-15', 'MT-09', 'R15 V3'] 
+}

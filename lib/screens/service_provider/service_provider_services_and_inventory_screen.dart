@@ -34,10 +34,12 @@ class _ServiceProviderServicesAndInventoryScreenState
             ],
           ),
         ),
-        body: const TabBarView(children: [
-          ServiceProviderServicesList(),
-          ServiceProviderInventoryList(),
-        ]),
+        body: const TabBarView(
+          children: [
+            ServiceProviderServicesList(),
+            ServiceProviderInventoryList(),
+          ],
+        ),
       ),
     );
   }

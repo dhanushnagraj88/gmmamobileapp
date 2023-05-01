@@ -5,6 +5,7 @@ import 'package:gmma/screens/customer/customer_tabs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_estimation_calculator_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_home_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_manage_customers_screen.dart';
+import 'package:gmma/screens/service_provider/service_provider_manage_employee_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_profile_complete_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_qr_scan_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_routing%20_screen.dart';
@@ -66,6 +67,8 @@ class MyApp extends StatelessWidget {
             const ServiceProviderManageCustomersScreen(),
         ServiceProviderQRScanScreen.routeName: (ctx) =>
             const ServiceProviderQRScanScreen(),
+        ServiceProviderManageEmployeeScreen.routeName: (ctx) =>
+            const ServiceProviderManageEmployeeScreen(),
       },
     );
   }

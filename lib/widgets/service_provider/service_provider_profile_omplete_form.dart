@@ -18,7 +18,9 @@ class ServiceProviderProfileCompleteForm extends StatefulWidget {
   final bool isLoading;
   final void Function({
     required String ownerName,
+    required String garageName,
     required String employeeType,
+    String? garageEmployeesID,
     required List<String> garageTypes,
     required File garageImage,
     required LatLng garageLocation,
@@ -47,6 +49,8 @@ class _ServiceProviderProfileCompleteFormState
   ];
   List<String>? _selectedGarageTypes = [];
   var _ownerName = '';
+  var _garageName = '';
+  var _garageEmployeesID = '';
   var _employeeType = '';
   File? _userImageFile;
   LatLng? _pickedLocation;
@@ -69,7 +73,9 @@ class _ServiceProviderProfileCompleteFormState
       widget.submitFn(
         ctx: context,
         ownerName: _ownerName,
+        garageName: _garageName,
         employeeType: _employeeType,
+        garageEmployeesID: _garageEmployeesID,
         garageTypes: _selectedGarageTypes!,
         garageImage: _userImageFile!,
         garageLocation: _pickedLocation!,
@@ -103,6 +109,19 @@ class _ServiceProviderProfileCompleteFormState
                       return null;
                     },
                   ),
+                  TextFormField(
+                    key: const ValueKey('garageName'),
+                    decoration: const InputDecoration(labelText: 'Garage Name'),
+                    onSaved: (value) {
+                      _garageName = value!;
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter the name of the Garage';
+                      }
+                      return null;
+                    },
+                  ),
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
                         labelText: 'Select Employee Type'),
@@ -126,6 +145,21 @@ class _ServiceProviderProfileCompleteFormState
                       return null;
                     },
                   ),
+                  if (_employeeType == 'Multiple Employee')
+                    TextFormField(
+                      key: const ValueKey('garageEmployeesID'),
+                      decoration: const InputDecoration(
+                          labelText: 'Garage Employees ID'),
+                      onSaved: (value) {
+                        _garageEmployeesID = value!;
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty || value.length < 6) {
+                          return 'Please enter a Garage Employees ID to manage employees';
+                        }
+                        return null;
+                      },
+                    ),
                   DropDownMultiSelect(
                     key: const ValueKey('garageType'),
                     // validator: (value) {

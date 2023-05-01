@@ -23,7 +23,9 @@ class _ServiceProviderProfileCompleteScreenState
   var _isLoading = false;
   void _submitProfileForm({
     required String ownerName,
+    required String garageName,
     required String employeeType,
+    String? garageEmployeesID,
     required List<String> garageTypes,
     required File garageImage,
     required LatLng garageLocation,
@@ -48,7 +50,9 @@ class _ServiceProviderProfileCompleteScreenState
             .doc(userData?.uid);
         fireData.update({
           'ownerName': ownerName,
+          'garageName': garageName,
           'employeeType': employeeType,
+          'garageEmployeesID': garageEmployeesID ?? '',
           'garageTypes': garageTypes,
           'imageUrl': url,
           'garageLocation':

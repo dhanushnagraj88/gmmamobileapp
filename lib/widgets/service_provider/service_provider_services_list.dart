@@ -173,7 +173,6 @@ class _ServiceProviderServicesListState
                           .toList(),
                       decoration: const InputDecoration(
                         labelText: 'Choose Service Type',
-                        border: OutlineInputBorder(),
                       ),
                       onSaved: (value) {
                         _serviceType = value as String;

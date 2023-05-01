@@ -33,6 +33,22 @@ class _ServiceProviderTabsScreenState extends State<ServiceProviderTabsScreen> {
           .get();
       setState(() {
         _currentUserData = userData;
+        _pages = [
+          {
+            'page': const ServiceProviderHomeScreen(),
+            'title': _currentUserData?['ownerName'] != null
+                ? 'Welcome, ${_currentUserData?['ownerName']}'
+                : 'Welcome',
+          },
+          {
+            'page': const ServiceProviderTransactionsScreen(),
+            'title': 'Transactions History',
+          },
+          {
+            'page': const ServiceProviderPaymentsScreen(),
+            'title': 'Pending Payments',
+          },
+        ];
       });
     } catch (error) {
       print(error);
@@ -50,65 +66,55 @@ class _ServiceProviderTabsScreenState extends State<ServiceProviderTabsScreen> {
     // TODO: implement initState
     _getCurrentUserDetails();
 
-    _pages = [
-      {
-        'page': const ServiceProviderHomeScreen(),
-        'title': 'Dashboard',
-      },
-      {
-        'page': const ServiceProviderTransactionsScreen(),
-        'title': 'Transactions History',
-      },
-      {
-        'page': const ServiceProviderPaymentsScreen(),
-        'title': 'Pending Payments',
-      },
-    ];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_pages![_selectedPageIndex]['title']),
-        actions: [
-          if (_selectedPageIndex == 0)
-            IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushReplacementNamed(
-                  ServiceProviderRoutingScreen.routeName,
-                );
-              },
-              icon: const Icon(Icons.logout),
-            )
-        ],
-      ),
-      body: _pages![_selectedPageIndex]['page'],
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: _selectPageIndex,
-          backgroundColor: Theme.of(context).primaryColorLight,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.black,
-          currentIndex: _selectedPageIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Theme.of(context).colorScheme.secondary,
+    return _currentUserData == null
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              title: Text(_pages![_selectedPageIndex]['title']),
+              actions: [
+                if (_selectedPageIndex == 0)
+                  IconButton(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacementNamed(
+                        ServiceProviderRoutingScreen.routeName,
+                      );
+                    },
+                    icon: const Icon(Icons.logout),
+                  )
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.receipt_long_outlined),
-              label: 'Transactions',
-              backgroundColor: Theme.of(context).colorScheme.secondary,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.qr_code_scanner),
-              label: 'Payments',
-              backgroundColor: Theme.of(context).colorScheme.secondary,
-            ),
-          ]),
-    );
+            body: _pages![_selectedPageIndex]['page'],
+            bottomNavigationBar: BottomNavigationBar(
+                onTap: _selectPageIndex,
+                backgroundColor: Theme.of(context).primaryColorLight,
+                selectedItemColor: Theme.of(context).primaryColor,
+                unselectedItemColor: Colors.black,
+                currentIndex: _selectedPageIndex,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.home),
+                    label: 'Home',
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.receipt_long_outlined),
+                    label: 'Transactions',
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.qr_code_scanner),
+                    label: 'Payments',
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                ]),
+          );
   }
 }

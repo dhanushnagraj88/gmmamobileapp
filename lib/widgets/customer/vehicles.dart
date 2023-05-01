@@ -12,6 +12,7 @@ class Vehicles extends StatefulWidget {
 class _VehiclesState extends State<Vehicles> {
   @override
   Widget build(BuildContext context) {
+    final userData = FirebaseAuth.instance.currentUser;
     return FutureBuilder(
       future: Future.value(FirebaseAuth.instance.currentUser),
       builder: (ctx, futureSnapshot) {
@@ -22,7 +23,9 @@ class _VehiclesState extends State<Vehicles> {
         }
         return StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('customerVehicles')
+              .collection('customers')
+              .doc(userData!.uid)
+              .collection('vehiclesList')
               .snapshots(),
           builder: (ctx, vehicleSnapshot) {
             if (vehicleSnapshot.connectionState == ConnectionState.waiting) {
@@ -106,7 +109,7 @@ class _VehiclesState extends State<Vehicles> {
                           ElevatedButton.icon(
                             onPressed: () {},
                             icon: const Icon(Icons.chevron_right),
-                            label: const Text('View Details'),
+                            label: const Text('View Service History'),
                           ),
                         ],
                       ),

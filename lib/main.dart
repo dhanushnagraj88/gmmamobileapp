@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gmma/screens/customer/customer_home_screen.dart';
+import 'package:gmma/screens/customer/customer_tabs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_estimation_calculator_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_home_screen.dart';
+import 'package:gmma/screens/service_provider/service_provider_manage_customers_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_profile_complete_screen.dart';
+import 'package:gmma/screens/service_provider/service_provider_qr_scan_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_routing%20_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_services_and_inventory_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_tabs_screen.dart';
@@ -42,6 +45,7 @@ class MyApp extends StatelessWidget {
         ChooseLoginTypeScreen.routeName: (ctx) => const ChooseLoginTypeScreen(),
         CustomerRoutingScreen.routeName: (ctx) => const CustomerRoutingScreen(),
         CustomerAuthScreen.routeName: (ctx) => const CustomerAuthScreen(),
+        CustomerTabsScreen.routeName: (ctx) => const CustomerTabsScreen(),
         CustomerHomeScreen.routeName: (ctx) => const CustomerHomeScreen(),
         AddVehicleScreen.routeName: (ctx) => const AddVehicleScreen(),
         ServiceProviderTabsScreen.routeName: (ctx) =>
@@ -58,6 +62,10 @@ class MyApp extends StatelessWidget {
             const ServiceProviderServicesAndInventoryScreen(),
         ServiceProviderEstimationCalculatorScreen.routeName: (ctx) =>
             const ServiceProviderEstimationCalculatorScreen(),
+        ServiceProviderManageCustomersScreen.routeName: (ctx) =>
+            const ServiceProviderManageCustomersScreen(),
+        ServiceProviderQRScanScreen.routeName: (ctx) =>
+            const ServiceProviderQRScanScreen(),
       },
     );
   }

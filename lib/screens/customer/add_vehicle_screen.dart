@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:gmma/widgets/customer/add_vehicle_form.dart';
+
+import '../../widgets/customer/add_vehicle_form.dart';
 
 class AddVehicleScreen extends StatefulWidget {
   const AddVehicleScreen({Key? key}) : super(key: key);
@@ -27,17 +28,20 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   }) async {
     // UserCredential authResult;
     try {
+      final userData = FirebaseAuth.instance.currentUser;
       final ref = FirebaseStorage.instance
           .ref()
           .child('customer_images')
+          .child(userData!.uid)
           .child('${vehicleNumber}jpg');
       UploadTask uploadTask = ref.putFile(vehicleImage);
       uploadTask.whenComplete(() async {
-        final userData = FirebaseAuth.instance.currentUser;
         final url = await ref.getDownloadURL();
         await FirebaseFirestore.instance
-            .collection('customerVehicles')
-            .doc()
+            .collection('customers')
+            .doc(userData.uid)
+            .collection('vehiclesList')
+            .doc(vehicleNumber)
             .set({
           'ownerName': ownerName,
           'vehicleNumber': vehicleNumber,
@@ -45,7 +49,7 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
           'vehicleMake': vehicleMake,
           'vehicleModel': vehicleModel,
           'imageUrl': url,
-          'userID': userData?.uid
+          'userID': userData.uid
         });
       });
     } on FirebaseException catch (error) {

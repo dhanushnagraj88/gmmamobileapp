@@ -47,6 +47,7 @@ class _CustomerAuthScreenState extends State<CustomerAuthScreen> {
           'userName': userName,
           'email': email,
           'phone': phone,
+          'userID': authResult.user!.uid,
         });
       }
     } on FirebaseException catch (error) {

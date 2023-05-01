@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gmma/screens/service_provider/service_provider_manage_customers_screen.dart';
 
 import './service_provider_estimation_calculator_screen.dart';
 import './service_provider_services_and_inventory_screen.dart';
@@ -22,76 +23,86 @@ class _ServiceProviderHomeScreenState extends State<ServiceProviderHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InkWell(
-              onTap: () => Navigator.of(context).pushNamed(
-                ServiceProviderServicesAndInventoryScreen.routeName,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(15),
-              child: Container(
-                alignment: Alignment.center,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                height: 120,
-                width: (size.width * 0.8) / 2,
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 3,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                  color: Theme.of(context).primaryColorLight,
-                ),
-                child: const Text(
-                  'Services and Inventory',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: const EdgeInsets.all(10),
+          child: ListTile(
+            leading: const Icon(
+              Icons.group,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Manage Customers',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            InkWell(
-              onTap: () => Navigator.of(context).pushNamed(
-                ServiceProviderEstimationCalculatorScreen.routeName,
+            tileColor: Theme.of(context).primaryColorLight,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onTap: () => Navigator.of(context).pushNamed(
+              ServiceProviderManageCustomersScreen.routeName,
+            ),
+          ),
+        ),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: const EdgeInsets.all(10),
+          child: ListTile(
+            leading: const Icon(
+              Icons.inventory,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Services and Inventory',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
               ),
-              splashColor: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(15),
-              child: Container(
-                alignment: Alignment.center,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                height: 120,
-                width: (size.width * 0.8) / 2,
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 3,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                  color: Theme.of(context).primaryColorLight,
-                ),
-                child: const Text(
-                  'Estimation Calculator',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            ),
+            tileColor: Theme.of(context).primaryColorLight,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onTap: () => Navigator.of(context).pushNamed(
+              ServiceProviderServicesAndInventoryScreen.routeName,
+            ),
+          ),
+        ),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: const EdgeInsets.all(10),
+          child: ListTile(
+            leading: const Icon(
+              Icons.calculate,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Estimation Calculator',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
               ),
-            )
-          ],
-        )
+            ),
+            tileColor: Theme.of(context).primaryColorLight,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onTap: () => Navigator.of(context).pushNamed(
+              ServiceProviderEstimationCalculatorScreen.routeName,
+            ),
+          ),
+        ),
       ],
     );
   }

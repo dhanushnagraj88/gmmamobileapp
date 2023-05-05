@@ -29,7 +29,7 @@ class _EmployeeAssignedJobsScreenState
     final docRef = value.docs.first.reference;
 
     final dummyData = await docRef
-        .collection('pendingJobsList')
+        .collection('employeesList')
         .doc(widget.employeeIDNumber)
         .get();
     final empRef = dummyData.reference;

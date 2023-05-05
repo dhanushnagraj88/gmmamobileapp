@@ -241,8 +241,8 @@ class _ServiceProviderOngoingJobsScreenState
         .collection('serviceProviders')
         .doc(userData?.uid)
         .collection('completedJobsList');
-    final newDocRef = await docRef.add(data);
-    await docRef.doc(newDocRef.id).update({'jobStatus': 'Completed'});
+    await docRef.doc(id).set(data);
+    await docRef.doc(id).update({'jobStatus': 'Completed'});
     await FirebaseFirestore.instance
         .collection('serviceProviders')
         .doc(userData?.uid)
@@ -270,6 +270,10 @@ class _ServiceProviderOngoingJobsScreenState
                 .collection('serviceProviders')
                 .doc(userData!.uid)
                 .collection('ongoingJobsList')
+                .orderBy(
+                  'dateAdded',
+                  descending: true,
+                )
                 .snapshots(),
             builder: (ctx, ongoingJobsSnapshot) {
               if (ongoingJobsSnapshot.connectionState ==

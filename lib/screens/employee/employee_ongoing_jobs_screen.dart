@@ -32,10 +32,18 @@ class _EmployeeOngoingJobsScreenState extends State<EmployeeOngoingJobsScreen> {
         .collection('employeesList')
         .doc(widget.employeeIDNumber)
         .get();
+    final ongoingJobColl = docRef
+        .collection('ongoingJobsList')
+        .orderBy(
+          'dateAdded',
+          descending: true,
+        )
+        .snapshots();
+
     final empRef = dummyData.reference;
     final jobDetails = empRef.collection('ongoingJobs').snapshots();
 
-    return [empRef, jobDetails, docRef];
+    return [empRef, ongoingJobColl, docRef];
   }
 
   void _showDetails(
@@ -243,14 +251,18 @@ class _EmployeeOngoingJobsScreenState extends State<EmployeeOngoingJobsScreen> {
   }
 
   void _setAsCompleted(Map<String, dynamic> data, String id) async {
-    final docRef = employeeDetails?.collection('completedJobs');
-    final newDocRef = await docRef?.add(data);
+    final docRef = FirebaseFirestore.instance
+        .collection('serviceProviders')
+        .doc(documentReference?.id)
+        .collection('completedJobsList');
+    await docRef.doc(id).set(data);
 
-    await employeeDetails
-        ?.collection('completedJobs')
-        .doc(newDocRef?.id)
-        .update({'jobStatus': 'Completed'});
-    await employeeDetails?.collection('ongoingJobs').doc(id).delete();
+    await FirebaseFirestore.instance
+        .collection('serviceProviders')
+        .doc(documentReference?.id)
+        .collection('ongoingJobsList')
+        .doc(id)
+        .delete();
   }
 
   @override
@@ -294,7 +306,19 @@ class _EmployeeOngoingJobsScreenState extends State<EmployeeOngoingJobsScreen> {
                 child: Text('No Ongoing Jobs at the moment!'),
               );
             }
-            final ongoingJobsDocs = ongoingJobSnapShots.data!.docs;
+            // final ongoingJobsDocs = ongoingJobSnapShots.data!.docs;
+            List<QueryDocumentSnapshot<Map<String, dynamic>>> ongoingJobsDocs =
+                [];
+            for (var element in ongoingJobSnapShots.data!.docs) {
+              if (element.data()['assignedTo'] == widget.employeeIDNumber) {
+                ongoingJobsDocs.add(element);
+              }
+            }
+            if (ongoingJobsDocs.isEmpty) {
+              return const Center(
+                child: Text('No Ongoing Jobs at the moment!'),
+              );
+            }
             return ListView.builder(
               itemCount: ongoingJobsDocs.length,
               itemBuilder: (ctx, index) {

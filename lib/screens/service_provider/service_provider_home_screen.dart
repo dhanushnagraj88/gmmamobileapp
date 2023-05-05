@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gmma/screens/service_provider/service_provider_choose_vehicle_screen.dart';
-import 'package:gmma/screens/service_provider/service_provider_completed_jobs_list.dart';
+import 'package:gmma/screens/service_provider/service_provider_completed_jobs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_manage_employee_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_ongoing_jobs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_pending_jobs_screen.dart';

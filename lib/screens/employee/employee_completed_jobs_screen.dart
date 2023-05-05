@@ -33,10 +33,18 @@ class _EmployeeCompletedJobsScreenState
         .collection('employeesList')
         .doc(widget.employeeIDNumber)
         .get();
+    final completedJobsColl = docRef
+        .collection('completedJobsList')
+        .orderBy(
+          'dateAdded',
+          descending: true,
+        )
+        .snapshots();
+
     final empRef = dummyData.reference;
     final jobDetails = empRef.collection('completedJobs').snapshots();
 
-    return [empRef, jobDetails, docRef];
+    return [empRef, completedJobsColl, docRef];
   }
 
   void _showDetails(
@@ -284,7 +292,19 @@ class _EmployeeCompletedJobsScreenState
                 child: Text('No Completed Jobs at the moment!'),
               );
             }
-            final completedJobsDocs = completedJobSnapShots.data!.docs;
+            // final completedJobsDocs = completedJobSnapShots.data!.docs;
+            List<QueryDocumentSnapshot<Map<String, dynamic>>>
+                completedJobsDocs = [];
+            for (var element in completedJobSnapShots.data!.docs) {
+              if (element.data()['assignedTo'] == widget.employeeIDNumber) {
+                completedJobsDocs.add(element);
+              }
+            }
+            if (completedJobsDocs.isEmpty) {
+              return const Center(
+                child: Text('No Assigned Jobs at the moment!'),
+              );
+            }
             return ListView.builder(
               itemCount: completedJobsDocs.length,
               itemBuilder: (ctx, index) {

@@ -27,15 +27,22 @@ class _EmployeeAssignedJobsScreenState
         .get();
 
     final docRef = value.docs.first.reference;
-
     final dummyData = await docRef
         .collection('employeesList')
         .doc(widget.employeeIDNumber)
         .get();
+    final assignedJobColl = docRef
+        .collection('pendingJobsList')
+        .orderBy(
+          'dateAdded',
+          descending: true,
+        )
+        .snapshots();
+
     final empRef = dummyData.reference;
     final jobDetails = empRef.collection('assignedJobs').snapshots();
 
-    return [empRef, jobDetails, docRef];
+    return [empRef, assignedJobColl, docRef];
   }
 
   void _showDetails(
@@ -243,14 +250,18 @@ class _EmployeeAssignedJobsScreenState
   }
 
   void _setAsOngoing(Map<String, dynamic> data, String id) async {
-    final docRef = employeeDetails?.collection('ongoingJobs');
-    await docRef?.doc(id).set(data);
+    final docRef = FirebaseFirestore.instance
+        .collection('serviceProviders')
+        .doc(documentReference?.id)
+        .collection('ongoingJobsList');
+    await docRef.doc(id).set(data);
 
-    await employeeDetails
-        ?.collection('ongoingJobs')
+    await FirebaseFirestore.instance
+        .collection('serviceProviders')
+        .doc(documentReference?.id)
+        .collection('pendingJobsList')
         .doc(id)
-        .update({'jobStatus': 'Ongoing'});
-    await employeeDetails?.collection('assignedJobs').doc(id).delete();
+        .delete();
   }
 
   @override
@@ -294,7 +305,19 @@ class _EmployeeAssignedJobsScreenState
                 child: Text('No Assigned Jobs at the moment!'),
               );
             }
-            final assignedJobsDocs = assignedJobSnapShots.data!.docs;
+            // final assignedJobsDocs = assignedJobSnapShots.data!.docs;
+            List<QueryDocumentSnapshot<Map<String, dynamic>>> assignedJobsDocs =
+                [];
+            for (var element in assignedJobSnapShots.data!.docs) {
+              if (element.data()['assignedTo'] == widget.employeeIDNumber) {
+                assignedJobsDocs.add(element);
+              }
+            }
+            if (assignedJobsDocs.isEmpty) {
+              return const Center(
+                child: Text('No Assigned Jobs at the moment!'),
+              );
+            }
             return ListView.builder(
               itemCount: assignedJobsDocs.length,
               itemBuilder: (ctx, index) {

@@ -6,7 +6,7 @@ import 'package:gmma/screens/employee/employee_login_screen.dart';
 import 'package:gmma/screens/employee/employee_tabs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_choose_parts_and_services_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_choose_vehicle_screen.dart';
-import 'package:gmma/screens/service_provider/service_provider_completed_jobs_list.dart';
+import 'package:gmma/screens/service_provider/service_provider_completed_jobs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_estimation_calculator_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_home_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_manage_customers_screen.dart';

@@ -328,24 +328,6 @@ class _ServiceProviderPendingJobsScreenState
     await FirebaseFirestore.instance
         .collection('serviceProviders')
         .doc(userData?.uid)
-        .collection('employeesList')
-        .doc(empID)
-        .collection('assignedJobs')
-        .doc(docID)
-        .set(jobData);
-    await FirebaseFirestore.instance
-        .collection('serviceProviders')
-        .doc(userData?.uid)
-        .collection('employeesList')
-        .doc(empID)
-        .collection('assignedJobs')
-        .doc(docID)
-        .update({
-      'assignedTo': empID,
-    });
-    await FirebaseFirestore.instance
-        .collection('serviceProviders')
-        .doc(userData?.uid)
         .collection('pendingJobsList')
         .doc(docID)
         .update({
@@ -387,6 +369,10 @@ class _ServiceProviderPendingJobsScreenState
                 .collection('serviceProviders')
                 .doc(userData!.uid)
                 .collection('pendingJobsList')
+                .orderBy(
+                  'dateAdded',
+                  descending: true,
+                )
                 .snapshots(),
             builder: (ctx, pendingJobsSnapshot) {
               if (pendingJobsSnapshot.connectionState ==

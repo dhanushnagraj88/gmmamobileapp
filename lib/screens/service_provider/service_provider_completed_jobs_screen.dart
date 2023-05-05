@@ -255,6 +255,10 @@ class _ServiceProviderCompletedJobsScreenState
                 .collection('serviceProviders')
                 .doc(userData!.uid)
                 .collection('completedJobsList')
+                .orderBy(
+                  'dateAdded',
+                  descending: true,
+                )
                 .snapshots(),
             builder: (ctx, completedJobsSnapshot) {
               if (completedJobsSnapshot.connectionState ==

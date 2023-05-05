@@ -88,33 +88,35 @@ class _ServiceProviderTabsScreenState extends State<ServiceProviderTabsScreen> {
                       );
                     },
                     icon: const Icon(Icons.logout),
-                  )
+                  ),
               ],
+              automaticallyImplyLeading: false,
             ),
             body: _pages![_selectedPageIndex]['page'],
             bottomNavigationBar: BottomNavigationBar(
-                onTap: _selectPageIndex,
-                backgroundColor: Theme.of(context).primaryColorLight,
-                selectedItemColor: Theme.of(context).primaryColor,
-                unselectedItemColor: Colors.black,
-                currentIndex: _selectedPageIndex,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.home),
-                    label: 'Home',
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.receipt_long_outlined),
-                    label: 'Transactions',
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.qr_code_scanner),
-                    label: 'Payments',
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
-                  ),
-                ]),
+              onTap: _selectPageIndex,
+              backgroundColor: Theme.of(context).primaryColorLight,
+              selectedItemColor: Theme.of(context).primaryColor,
+              unselectedItemColor: Colors.black,
+              currentIndex: _selectedPageIndex,
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.home),
+                  label: 'Home',
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.receipt_long_outlined),
+                  label: 'Transactions',
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.qr_code_scanner),
+                  label: 'Payments',
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
+              ],
+            ),
           );
   }
 }

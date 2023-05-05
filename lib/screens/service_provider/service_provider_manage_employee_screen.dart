@@ -144,6 +144,7 @@ class _ServiceProviderManageEmployeeScreenState
       'userID': auth!.uid,
       'dateAdded': DateTime.now(),
       'key': DateTime.now().toString(),
+      'garageEmployeesID': collectionsData!['garageEmployeesID'],
     });
     Navigator.of(ctx).pop();
   }

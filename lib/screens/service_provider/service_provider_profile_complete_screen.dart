@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gmma/screens/service_provider/service_provider_tabs_screen.dart';
-import 'package:gmma/widgets/service_provider/service_provider_profile_omplete_form.dart';
+import 'package:gmma/widgets/service_provider/service_provider_profile_complete_form.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ServiceProviderProfileCompleteScreen extends StatefulWidget {
@@ -32,7 +32,6 @@ class _ServiceProviderProfileCompleteScreenState
     required String garageAddress,
     required BuildContext ctx,
   }) async {
-    UserCredential authResult;
     try {
       setState(() {
         _isLoading = true;
@@ -77,7 +76,9 @@ class _ServiceProviderProfileCompleteScreenState
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: ServiceProviderProfileCompleteForm(
-          isLoading: _isLoading, submitFn: _submitProfileForm),
+        isLoading: _isLoading,
+        submitFn: _submitProfileForm,
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gmma/screens/employee/employee_login_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_routing%20_screen.dart';
 
 import './customer/customer_routing_screen.dart';
@@ -28,6 +29,51 @@ class ChooseLoginTypeScreen extends StatelessWidget {
     );
   }
 
+  Future<void> _showSimpleDialog(BuildContext ctx) async {
+    await showDialog<void>(
+      context: ctx,
+      builder: (BuildContext ctx) {
+        return SimpleDialog(
+          alignment: Alignment.center,
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () {},
+              child: ElevatedButton(
+                onPressed: () => Navigator.of(ctx)
+                    .pushNamed(ServiceProviderRoutingScreen.routeName),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: Text(
+                    'Login as Owner',
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SimpleDialogOption(
+              onPressed: () {},
+              child: ElevatedButton(
+                onPressed: () => Navigator.of(ctx)
+                    .pushReplacementNamed(EmployeeLoginScreen.routeName),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: Text(
+                    'Login as Employee',
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +92,22 @@ class ChooseLoginTypeScreen extends StatelessWidget {
                 'I am a Customer',
                 context,
               ),
-              elevButton(
-                ServiceProviderRoutingScreen.routeName,
-                'I am a Service Provider',
-                context,
+              ElevatedButton(
+                onPressed: () => _showSimpleDialog(context),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: Text(
+                    'I am a Service Provider',
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

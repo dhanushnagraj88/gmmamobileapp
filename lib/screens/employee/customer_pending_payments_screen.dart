@@ -1,43 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gmma/screens/employee/customer_payments_screen.dart';
 
-class ServiceProviderPaymentsScreen extends StatefulWidget {
-  const ServiceProviderPaymentsScreen({Key? key}) : super(key: key);
+class CustomerPendingPaymentsScreen extends StatefulWidget {
+  const CustomerPendingPaymentsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ServiceProviderPaymentsScreen> createState() =>
-      _ServiceProviderPaymentsScreenState();
+  State<CustomerPendingPaymentsScreen> createState() =>
+      _CustomerPendingPaymentsScreenState();
 }
 
-class _ServiceProviderPaymentsScreenState
-    extends State<ServiceProviderPaymentsScreen> {
+class _CustomerPendingPaymentsScreenState
+    extends State<CustomerPendingPaymentsScreen> {
   final userData = FirebaseAuth.instance.currentUser;
-
-  void _paymentsRecieved(Map<String, dynamic> data, String id) async {
-    final docRef = FirebaseFirestore.instance.collection('serviceProviders');
-    await docRef
-        .doc(userData?.uid)
-        .collection('transactionsList')
-        .doc(id)
-        .set(data);
-    await docRef
-        .doc(userData?.uid)
-        .collection('pendingPaymentsList')
-        .doc(id)
-        .delete();
-    final QuerySnapshot snapshot = await FirebaseFirestore.instance
-        .collection('customers')
-        .doc(data['userID'])
-        .collection('pendingPayments')
-        .where('dateAdded', isEqualTo: data['dateAdded'])
-        .get();
-    final List<DocumentSnapshot> documents = snapshot.docs;
-    for (DocumentSnapshot document in documents) {
-      await document.reference.delete();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -50,9 +26,9 @@ class _ServiceProviderPaymentsScreenState
         }
         return StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('serviceProviders')
+              .collection('customers')
               .doc(userData?.uid)
-              .collection('pendingPaymentsList')
+              .collection('pendingPayments')
               .snapshots(),
           builder: (ctx, paymentsSnapshot) {
             if (paymentsSnapshot.connectionState == ConnectionState.waiting) {
@@ -76,32 +52,26 @@ class _ServiceProviderPaymentsScreenState
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          'Vehicle Number: ${paymentsDocs[index]['vehicleNumber']}',
+                          'Vehicle : ${paymentsDocs[index]['vehicleNumber']}',
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'Owner Name: ${paymentsDocs[index]['ownerName']}',
+                          'Amount Payable: ₹${paymentsDocs[index]['totalCost']}',
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          'Service Cost: ${paymentsDocs[index]['totalCost']}',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                        ElevatedButton.icon(
+                          onPressed: () => Navigator.of(context).pushNamed(
+                            CustomerPaymentsScreen.routeName,
+                            arguments: paymentsDocs[index],
                           ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () => _paymentsRecieved(
-                            paymentsDocs[index].data(),
-                            paymentsDocs[index].id,
-                          ),
-                          child: const Text('Payment Recieved'),
+                          icon: const Icon(Icons.credit_card),
+                          label: const Text('Pay'),
                         ),
                       ],
                     ),

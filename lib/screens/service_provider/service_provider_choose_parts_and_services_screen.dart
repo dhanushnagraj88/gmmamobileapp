@@ -107,6 +107,7 @@ class _ServiceProviderChoosePartsAndServicesScreenState
                   'totalDuration': totalDuration,
                   'dateAdded': DateTime.now(),
                   'ownerID': userData?.uid,
+                  'upiID': collectionsData?.data()!['upiId']
                 },
               );
               Navigator.of(ctx).pop();

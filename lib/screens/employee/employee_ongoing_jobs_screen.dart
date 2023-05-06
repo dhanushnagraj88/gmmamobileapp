@@ -256,7 +256,16 @@ class _EmployeeOngoingJobsScreenState extends State<EmployeeOngoingJobsScreen> {
         .doc(documentReference?.id)
         .collection('completedJobsList');
     await docRef.doc(id).set(data);
-
+    await FirebaseFirestore.instance
+        .collection('serviceProviders')
+        .doc(documentReference?.id)
+        .collection('pendingPaymentsList')
+        .add(data);
+    await FirebaseFirestore.instance
+        .collection('customers')
+        .doc(data['userID'])
+        .collection('pendingPayments')
+        .add(data);
     await FirebaseFirestore.instance
         .collection('serviceProviders')
         .doc(documentReference?.id)

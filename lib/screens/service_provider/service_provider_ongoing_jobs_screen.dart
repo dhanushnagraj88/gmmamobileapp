@@ -245,6 +245,16 @@ class _ServiceProviderOngoingJobsScreenState
     await docRef.doc(id).update({'jobStatus': 'Completed'});
     await FirebaseFirestore.instance
         .collection('serviceProviders')
+        .doc(userData!.uid)
+        .collection('pendingPaymentsList')
+        .add(data);
+    await FirebaseFirestore.instance
+        .collection('customers')
+        .doc(data['userID'])
+        .collection('pendingPayments')
+        .add(data);
+    await FirebaseFirestore.instance
+        .collection('serviceProviders')
         .doc(userData?.uid)
         .collection('ongoingJobsList')
         .doc(id)

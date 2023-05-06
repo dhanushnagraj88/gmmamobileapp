@@ -30,6 +30,7 @@ class _ServiceProviderProfileCompleteScreenState
     required File garageImage,
     required LatLng garageLocation,
     required String garageAddress,
+    required String upiID,
     required BuildContext ctx,
   }) async {
     try {
@@ -57,6 +58,7 @@ class _ServiceProviderProfileCompleteScreenState
           'garageLocation':
               GeoPoint(garageLocation.latitude, garageLocation.longitude),
           'garageAddress': garageAddress,
+          'upiId': upiID,
         });
       }).then((value) {
         if (value.state == TaskState.success) {

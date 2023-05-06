@@ -6,6 +6,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 class CustomerQRScreen extends StatefulWidget {
   const CustomerQRScreen({Key? key}) : super(key: key);
 
+  static const routeName = '/customer-qr-screen';
+
   @override
   State<CustomerQRScreen> createState() => _CustomerQRScreenState();
 }
@@ -40,29 +42,34 @@ class _CustomerQRScreenState extends State<CustomerQRScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _currentUserData != null
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                QrImage(data: userID!, size: 300),
-                Text(
-                  'Customer Name: ${_currentUserData!['userName']}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile QR Code'),
+      ),
+      body: Center(
+        child: _currentUserData != null
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  QrImage(data: userID!, size: 300),
+                  Text(
+                    'Customer Name: ${_currentUserData!['userName']}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  'Customer Number: ${_currentUserData!['phone']}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    'Customer Number: ${_currentUserData!['phone']}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            )
-          : const CircularProgressIndicator(),
+                ],
+              )
+            : const CircularProgressIndicator(),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gmma/screens/customer/customer_routing_screen.dart';
+import 'package:gmma/screens/employee/customer_pending_payments_screen.dart';
 
 import './add_vehicle_screen.dart';
 import './customer_home_screen.dart';
@@ -40,8 +41,8 @@ class _CustomerTabsScreenState extends State<CustomerTabsScreen> {
                 : 'Welcome',
           },
           {
-            'page': const CustomerQRScreen(),
-            'title': 'Your Profile QR Code',
+            'page': const CustomerPendingPaymentsScreen(),
+            'title': 'Pending Payments',
           },
         ];
       });
@@ -76,6 +77,13 @@ class _CustomerTabsScreenState extends State<CustomerTabsScreen> {
               actions: [
                 if (_selectedPageIndex == 0)
                   IconButton(
+                    onPressed: () => Navigator.of(context).pushNamed(
+                      CustomerQRScreen.routeName,
+                    ),
+                    icon: const Icon(Icons.qr_code_2),
+                  ),
+                if (_selectedPageIndex == 0)
+                  IconButton(
                     onPressed: () {
                       FirebaseAuth.instance.signOut();
                       Navigator.of(context).pushReplacementNamed(
@@ -100,8 +108,8 @@ class _CustomerTabsScreenState extends State<CustomerTabsScreen> {
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.qr_code_2),
-                  label: 'Profile QR',
+                  icon: const Icon(Icons.payments_outlined),
+                  label: 'Pending Payments',
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
               ],

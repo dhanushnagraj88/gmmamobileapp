@@ -26,6 +26,7 @@ class ServiceProviderProfileCompleteForm extends StatefulWidget {
     required LatLng garageLocation,
     required String garageAddress,
     required BuildContext ctx,
+    required String upiID,
   }) submitFn;
 
   @override
@@ -52,6 +53,7 @@ class _ServiceProviderProfileCompleteFormState
   var _garageName = '';
   var _garageEmployeesID = '';
   var _employeeType = '';
+  var _upiID = '';
   File? _userImageFile;
   LatLng? _pickedLocation;
   String? _pickedAddress;
@@ -80,6 +82,7 @@ class _ServiceProviderProfileCompleteFormState
         garageImage: _userImageFile!,
         garageLocation: _pickedLocation!,
         garageAddress: _pickedAddress!,
+        upiID: _upiID,
       );
     }
   }
@@ -176,6 +179,19 @@ class _ServiceProviderProfileCompleteFormState
                       },
                     ),
                     whenEmpty: 'Select your Garage Type',
+                  ),
+                  TextFormField(
+                    key: const ValueKey('upiID'),
+                    decoration: const InputDecoration(labelText: 'UPI ID'),
+                    onSaved: (value) {
+                      _upiID = value!;
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a valid UPI ID';
+                      }
+                      return null;
+                    },
                   ),
                   UserImagePicker(imagePicker: _pickedImage),
                   UserLocationPicker(onSelectPlace: _selectedPlace),

@@ -43,6 +43,7 @@ dependencies:
   qr_flutter: ^4.0.0
   qr_code_scanner: ^1.0.1
   intl:
+  upi_india: ^3.0.1
 
 
 

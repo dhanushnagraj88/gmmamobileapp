@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gmma/screens/customer/customer_home_screen.dart';
+import 'package:gmma/screens/customer/customer_payments_screen.dart';
 import 'package:gmma/screens/customer/customer_qr_screen.dart';
 import 'package:gmma/screens/customer/customer_tabs_screen.dart';
-import 'package:gmma/screens/employee/customer_payments_screen.dart';
 import 'package:gmma/screens/employee/employee_login_screen.dart';
 import 'package:gmma/screens/employee/employee_tabs_screen.dart';
 import 'package:gmma/screens/service_provider/service_provider_choose_parts_and_services_screen.dart';

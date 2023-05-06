@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gmma/screens/customer/customer_nearby_garages.dart';
+import 'package:gmma/screens/customer/customer_pending_payments_screen.dart';
 import 'package:gmma/screens/customer/customer_routing_screen.dart';
-import 'package:gmma/screens/employee/customer_pending_payments_screen.dart';
 
 import './add_vehicle_screen.dart';
 import './customer_home_screen.dart';
@@ -39,6 +40,10 @@ class _CustomerTabsScreenState extends State<CustomerTabsScreen> {
             'title': _currentUserData?['userName'] != null
                 ? 'Welcome, ${_currentUserData?['userName']}'
                 : 'Welcome',
+          },
+          {
+            'page': const CustomerNearbyGarages(),
+            'title': 'Nearby Available Garages',
           },
           {
             'page': const CustomerPendingPaymentsScreen(),
@@ -105,6 +110,11 @@ class _CustomerTabsScreenState extends State<CustomerTabsScreen> {
                 BottomNavigationBarItem(
                   icon: const Icon(Icons.directions_car),
                   label: 'Manage Vehicles',
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.near_me),
+                  label: 'Nearby Garages',
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 BottomNavigationBarItem(

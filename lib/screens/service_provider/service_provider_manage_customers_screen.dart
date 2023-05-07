@@ -102,11 +102,11 @@ class _ServiceProviderManageCustomersScreenState
                           Text(
                             'Customer ID: ${customerDocs[index]['userID']}',
                           ),
-                          ElevatedButton.icon(
-                            onPressed: () {},
-                            icon: const Icon(Icons.keyboard_arrow_right),
-                            label: const Text('View Details'),
-                          ),
+                          // ElevatedButton.icon(
+                          //   onPressed: () {},
+                          //   icon: const Icon(Icons.keyboard_arrow_right),
+                          //   label: const Text('View Details'),
+                          // ),
                           ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor:

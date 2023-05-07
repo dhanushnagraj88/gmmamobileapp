@@ -256,6 +256,7 @@ class _EmployeeOngoingJobsScreenState extends State<EmployeeOngoingJobsScreen> {
         .doc(documentReference?.id)
         .collection('completedJobsList');
     await docRef.doc(id).set(data);
+    await docRef.doc(id).update({'jobStatus': 'Completed'});
     await FirebaseFirestore.instance
         .collection('serviceProviders')
         .doc(documentReference?.id)

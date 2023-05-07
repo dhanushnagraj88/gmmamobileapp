@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gmma/screens/employee/employee_login_screen.dart';
-import 'package:gmma/screens/service_provider/service_provider_routing%20_screen.dart';
 
 import './customer/customer_routing_screen.dart';
+import './employee/employee_login_screen.dart';
+import './service_provider/service_provider_routing%20_screen.dart';
 
 class ChooseLoginTypeScreen extends StatelessWidget {
   const ChooseLoginTypeScreen({Key? key}) : super(key: key);

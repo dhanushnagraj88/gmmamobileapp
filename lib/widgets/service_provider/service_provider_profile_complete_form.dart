@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gmma/helpers/location_helper.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:multiselect/multiselect.dart';
 
+import '../../helpers/location_helper.dart';
 import '../user_image_picker.dart';
 import '../user_location_picker.dart';
 

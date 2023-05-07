@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../screens/customer/customer_service_history_screen.dart';
+
 class Vehicles extends StatefulWidget {
   const Vehicles({Key? key}) : super(key: key);
 
@@ -107,7 +109,10 @@ class _VehiclesState extends State<Vehicles> {
                             ),
                           ),
                           ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: () => Navigator.of(context).pushNamed(
+                              CustomerServiceHistoryScreen.routeName,
+                              arguments: vehicleDocs[index]['vehicleNumber'],
+                            ),
                             icon: const Icon(Icons.chevron_right),
                             label: const Text('View Service History'),
                           ),

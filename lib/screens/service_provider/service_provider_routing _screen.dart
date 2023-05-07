@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gmma/screens/service_provider/service_provider_profile_complete_screen.dart';
-import 'package:gmma/screens/service_provider/service_provider_tabs_screen.dart';
 
 import './service_provider_auth_screen.dart';
+import './service_provider_profile_complete_screen.dart';
+import './service_provider_tabs_screen.dart';
 
 class ServiceProviderRoutingScreen extends StatelessWidget {
   const ServiceProviderRoutingScreen({Key? key}) : super(key: key);

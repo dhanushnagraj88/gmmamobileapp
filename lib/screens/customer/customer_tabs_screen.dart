@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gmma/screens/customer/customer_nearby_garages.dart';
-import 'package:gmma/screens/customer/customer_pending_payments_screen.dart';
-import 'package:gmma/screens/customer/customer_routing_screen.dart';
 
 import './add_vehicle_screen.dart';
 import './customer_home_screen.dart';
+import './customer_nearby_garages.dart';
+import './customer_pending_payments_screen.dart';
 import './customer_qr_screen.dart';
+import './customer_routing_screen.dart';
 
 class CustomerTabsScreen extends StatefulWidget {
   const CustomerTabsScreen({Key? key}) : super(key: key);

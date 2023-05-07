@@ -255,7 +255,7 @@ class _EmployeeAssignedJobsScreenState
         .doc(documentReference?.id)
         .collection('ongoingJobsList');
     await docRef.doc(id).set(data);
-
+    await docRef.doc(id).update({'jobStatus': 'Ongoing'});
     await FirebaseFirestore.instance
         .collection('serviceProviders')
         .doc(documentReference?.id)

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gmma/screens/employee/employee_assigned_jobs_screen.dart';
-import 'package:gmma/screens/employee/employee_completed_jobs_screen.dart';
-import 'package:gmma/screens/employee/employee_ongoing_jobs_screen.dart';
+
+import './employee_assigned_jobs_screen.dart';
+import './employee_completed_jobs_screen.dart';
+import './employee_ongoing_jobs_screen.dart';
 
 class EmployeeTabsScreen extends StatefulWidget {
   const EmployeeTabsScreen({Key? key}) : super(key: key);

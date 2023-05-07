@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gmma/widgets/service_provider/service_provider_inventory_list.dart';
-import 'package:gmma/widgets/service_provider/service_provider_services_list.dart';
+
+import '../../widgets/service_provider/service_provider_inventory_list.dart';
+import '../../widgets/service_provider/service_provider_services_list.dart';
 
 class ServiceProviderServicesAndInventoryScreen extends StatefulWidget {
   const ServiceProviderServicesAndInventoryScreen({Key? key}) : super(key: key);

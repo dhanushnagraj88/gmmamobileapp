@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gmma/screens/employee/employee_tabs_screen.dart';
+
+import './employee_tabs_screen.dart';
 
 class EmployeeLoginScreen extends StatefulWidget {
   const EmployeeLoginScreen({Key? key}) : super(key: key);

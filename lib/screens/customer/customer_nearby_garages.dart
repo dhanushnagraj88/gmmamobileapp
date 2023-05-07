@@ -13,6 +13,7 @@ class CustomerNearbyGarages extends StatefulWidget {
 class _CustomerNearbyGaragesState extends State<CustomerNearbyGarages> {
   User? userData = FirebaseAuth.instance.currentUser;
   Position? userCurrentLocation;
+  int? distanceInMeters;
 
   Future<void> _getCurrentUserLocation() async {
     bool serviceEnabled;
@@ -79,12 +80,13 @@ class _CustomerNearbyGaragesState extends State<CustomerNearbyGarages> {
                   [];
               for (var element in garagesSnapshot.data!.docs) {
                 GeoPoint garageLocation = element.data()['garageLocation'];
-                double distanceInMeters = Geolocator.distanceBetween(
-                    userCurrentLocation!.latitude,
-                    userCurrentLocation!.longitude,
-                    garageLocation.latitude,
-                    garageLocation.longitude);
-                if (distanceInMeters.toInt() < 5000) {
+                distanceInMeters = Geolocator.distanceBetween(
+                        userCurrentLocation!.latitude,
+                        userCurrentLocation!.longitude,
+                        garageLocation.latitude,
+                        garageLocation.longitude)
+                    .toInt();
+                if (distanceInMeters!.toInt() < 5000) {
                   nearbyGarages.add(element);
                 }
               }
